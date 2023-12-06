@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Font Color: <input type="color" id="color-input"> </h3>
+
+    <script>
+        const htmlEle = document.documentElement;
+        const input = document.querySelector('#color-input');
+    
+        // Add an event listener to listen for changes in the color input
+        input.addEventListener('input', function() {
+            // Update the background color dynamically
+            htmlEle.style.backgroundColor = input.value;
+    
+            // Store the selected color in localStorage
+            localStorage.setItem('color', input.value);
+        });
+    
+        // Check if there is a stored color in localStorage
+        const storedColor = localStorage.getItem('color');
+        if (storedColor !== null) {
+            // Set the initial background color based on the stored color
+            htmlEle.style.backgroundColor = storedColor;
+    
+            // Set the initial value of the color input to the stored color
+            input.value = storedColor;
+        }
+    </script>
+</html>
